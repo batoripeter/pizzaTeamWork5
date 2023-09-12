@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap" rel="stylesheet">
+    <script type="module" src="/src/main.ts" defer></script>
+    <title>PizzaScript</title>
+  </head>
+  <body class="w-full  bg-gradient-to-t from-orange-400 to-sky-400 bg-no-repeat">
+  <!--Main-Box ---------------------------------------------->
+    <div id="main-box" class="w-4/5 mx-auto flex flex-col">
+      <!--Team name ----------------------------------------->
+      <div id="team-name" class="flex flex-col justify-center items-center gap-2 py-2">
+        <h1 class="text-6xl">PizzaScript</h1>
+        <p class="italic">We Coding What You Order!</p>
+      </div>
+         <!--Pizza list ----------------------------------------->
+         <section id="pizzasection">
+          <!-- <div id="pizza-section0" class="flex flex-wrap pizzabox">
+          </div>
+          <div id="pizza-section1" class="flex flex-wrap pizzabox">
+          </div>
+          <div id="pizza-section2" class="flex flex-wrap pizzabox">
+          </div>
+          <div id="pizza-section3" class="flex flex-wrap pizzabox">
+          </div>
+          <div id="pizza-section4" class="flex flex-wrap pizzabox">
+          </div>
+          <div id="pizza-section5" class="flex flex-wrap pizzabox">
+          </div>
+          <div id="pizza-section6" class="flex flex-wrap pizzabox">
+          </div> -->
+        </section>
+
+
+     
+
+      </div>
+ <!--Form -------------------------------------------->
+ <form id="formsection" class="mx-auto mt-10">
+  <!--Form Name ------------------------------------->
+  <div id="form-name" class="flex flex-col">
+    <label class="tracking-wide text-gray-700 text-lg font-bold mb-2">
+      NAME
+    </label>
+    <div>
+      <input id="name" type="text" placeholder="John Wick" required pattern="[A-Za-z ]+" title="Please enter letters and spaces only" class=" bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+    </div> 
+  </div>
+
+
+        <!--Form Address --------------------------------->
+        <div id="form-address" class="flex gap-3">
+          <!--Zipcode ----------------------------------->
+          <div class="flex flex-col">
+            <label class="tracking-wide text-gray-700 text-lg font-bold mb-2">
+              ZIP CODE
+            </label>
+            <div>
+              <input id="zipcode" type="text" placeholder="1108" required pattern="[0-9]+" title="Please enter numbers only" class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            </div> 
+          </div>
+          <!-- City ------------------------------------->
+          <div class="flex flex-col">
+            <label class="tracking-wide text-gray-700 text-lg font-bold mb-2">
+              CITY
+            </label>
+            <div>
+              <input id="city" type="text" placeholder="Budapest" required pattern="[A-Za-z ]+" title="Please enter letters and spaces only" class="w-full bg-gray-200 text-gray-700 borde rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            </div> 
+          </div>
+          <!-- Street --------------------------------------->
+          <div class="flex flex-col">
+            <label class="tracking-wide text-gray-700 text-lg font-bold mb-2">
+              STREET
+            </label>
+            <div>
+              <input id="street" type="text" placeholder="Móricz Zsigmond utca" required pattern="[A-Za-z ]+" title="Please enter letters and spaces only" class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            </div> 
+          </div>
+          <!-- House Number --------------------------------->
+          <div class="flex flex-col">
+            <label class="tracking-wide text-gray-700 text-lg font-bold mb-2">
+              HOUSE NUMBER
+            </label>
+            <div>
+              <input id="house" type="text" placeholder="102" required pattern="[0-9]+" title="Please enter numbers only" class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            </div>
+          </div>
+        </div>
+        <!-- Form Contact ------------------------------------->
+        <div id="form-contact" class="flex gap-3">
+          <!-- E-mail ----------------------------------------->
+          <div class="flex flex-col">
+            <label class="tracking-wide text-gray-700 text-lg font-bold mb-2">
+              E-MAIL
+            </label>
+            <div>
+              <input id="email" id="email" type="email" placeholder="john.wick@gmail.com" required class="w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            </div>  
+          </div>
+          <!-- Phone Number ----------------------------------->
+          <div class="flex flex-col">
+            <label class="tracking-wide text-gray-700 text-lg font-bold mb-2">
+              PHONE NUMBER
+            </label>
+            <div>
+              <input id="phone" type="text" placeholder="+36105551117" required pattern="[0-9+]+" title="Please enter numbers and + only"  class="w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            </div>  
+          </div>
+        </div>
+      </form>
+      <!-- Add to Order Button ---------------------------------->
+      <div class="text-center my-5">
+        <button type="submit" id="addtoorder" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">ADD TO ORDER</button>
+      </div>
+      <!-- Order Check Section ---------------------------------->
+      <div id="ordercheck" style="display: none;" class="flex flex-col bg-white bg-opacity-20 rounded-lg">
+        <div class="flex justify-center gap-6 py-2">
+          <div>
+            <h2>NAME:</h>
+            <h2>ADDRESS:</h>
+            <h2>E-MAIL:</h>
+            <h2>PHONE NUMBER:</h>
+          </div>
+          <div>
+            <h2 id="outname"></h>
+            <h2 id="outaddress"></h>
+            <h2 id="outemail"></h>
+            <h2 id="outphone"></h>
+          </div>
+        </div>
+        <!-- Pizza Order-->
+        <div id="pizzaorder" class="flex justify-center gap-6 py-4">
+          <div id="pizzaordername">
+          </div>
+          <div id="pizzaorderpiece">
+          </div>
+          <div id="pizzaorderprice">
+          </div>
+        </div>
+        <div class="flex justify-center gap-6 py-4">
+          <div >
+            <h2>TOTAL PRICE:</h2>
+          </div>
+          <div id="totalprice">
+          </div>
+        </div>
+      </div>
+      <!-- Order Button ---------------------------------------->
+      <div id="orderbutton-box" class="text-center my-4">
+        <button type="submit" style="display:none" id="order" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">ORDER</button>
+      </div>
+    
+    </div>
+    
+  </body>
+  </html>
+  

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1, h3, h2 {
+  font-family: 'Teko', sans-serif;
+}
+
+h3, h2 {
+  font-size: 2rem;
+}
+
+img {
+  border: 1px solid white;
+}
+
+span {
+  font-weight: bold;
+}

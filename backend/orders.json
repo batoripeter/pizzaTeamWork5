@@ -1,0 +1,65 @@
+[
+  {
+    "pizza": [
+      {
+        "pizza": "Meatball Marinara",
+        "price": "3990",
+        "piece": "1"
+      }
+    ],
+    "date": "2023-9-11-8-53",
+    "name": "Gergely Szenftner",
+    "phone": "06702787238",
+    "zipCode": "9012",
+    "city": "Győr",
+    "street": "Régiposta út 20",
+    "house": "2121"
+  },
+  {
+    "pizza": [
+      {
+        "pizza": "The Cheeseburger",
+        "price": "3950",
+        "piece": "2"
+      },
+      {
+        "pizza": "Texas BBQ",
+        "price": "3690",
+        "piece": "10"
+      }
+    ],
+    "date": "2023-9-11-9-11",
+    "name": "Kovács Géza",
+    "phone": "06702787238",
+    "zipCode": "9012",
+    "city": "Budapest",
+    "street": "Kazal utca",
+    "house": "21"
+  },
+  {
+    "pizza": [
+      {
+        "pizza": "Vegi Supreme",
+        "price": "3790",
+        "piece": "3"
+      },
+      {
+        "pizza": "Pepperoni Passion",
+        "price": "3990",
+        "piece": "4"
+      },
+      {
+        "pizza": "Texas BBQ",
+        "price": "3690",
+        "piece": "2"
+      }
+    ],
+    "date": "2023-9-11-9-0",
+    "name": "Szenftner Gergely",
+    "phone": "06702787238",
+    "zipCode": "9072",
+    "city": "Nagyszentjános",
+    "street": "Fenyves utca 9",
+    "house": "32"
+  }
+]

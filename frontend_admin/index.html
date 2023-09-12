@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+  <head>
+    <meta charset="UTF-8" />
+    <script type="module" src="./src/main.ts" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   </head>
+  <body class="flex-row items-center justify-center">
+
+
+    <div id="app" class="flex-row text-3xl">
+
+      <div class="warpper">
+        <input class="radio" id="one" name="group" type="radio" checked>
+        <input class="radio" id="two" name="group" type="radio">
+        <input class="radio" id="three" name="group" type="radio">
+        <div class="tabs">
+        <label class="tab" id="one-tab" for="one">Add new pizza</label>
+        <label class="tab" id="two-tab" for="two">Update pizza</label>
+        <label class="tab" id="three-tab" for="three">Remove pizza</label>
+          </div>
+        <div class="panels">
+        <div class="panel" id="one-panel">
+
+    <section id="addPizza" class="bg-slate-300 m-5 p-5">
+      <h1>Add New Pizza</h1>
+          <div class="p-3">
+           <label for="pizzaname"><span class="badge">Pizza name</span></label>  
+           <input type="text" class="input input-bordered input-accent w-full max-w-xs"  placeholder="Pizza name" id="name"/>
+          </div>
+          <div class="p-3"> 
+                <label for="name"><span>Toppings</span></label>
+                
+                   <fieldset id="base">
+                      <span class="badge">Tomato sauce</span><input type="checkbox" value="tomato" name="group1"  class="toppings-form"></label>
+                     <span class="badge">Sour cream</span><input type="checkbox" value="cream" name="group1"  class="toppings-form"></label>
+                    </fieldset>
+
+                    <fieldset id="top">
+                      <label for="cheese"><span class="badge">Cheese</span><input type="checkbox" value="cheese" name="group2"  class="toppings-form"></label>
+                     <span class="badge">Ham</span><input type="checkbox" value="ham" name="group2"  class="toppings-form"></label>
+                      <span class="badge">Pineapple</span><input type="checkbox" value="pineapple" name="group2"  class="toppings-form"></label>
+                      <span class="badge">Pepperoni</span><input type="checkbox" value="pepperoni" name="group2"  class="toppings-form"></label>
+                      <span class="badge">Bacon</span><input type="checkbox" value="bacon" name="group2"  class="toppings-form"></label>
+                    </fieldset>
+                 
+          </div>
+          <div class="p-3"> 
+               <label for="price"><span class="badge">Price</span></label>
+              <input type="number" class="input input-bordered input-accent w-full max-w-xs"  placeholder="Price" id="price"/>
+           </div>
+           <div class="p-3">
+            <label for="file"><span>Upload File</span></label>  
+                    <input type="file" class="file-input-primary" id="image" name="image" />  
+                       
+            </div> <br>
+               <button class="btn btn-info" id="load-button">Add</button>
+               <button class="btn btn-neutral" id="clear-button">Clear form</button>
+              
+      </section>
+
+    </div>
+    <div class="panel" id="two-panel">
+
+
+         
+      <section id="updatePizza" class="bg-slate-300 m-5 p-5">
+        <h1>Update Pizza</h1>
+            <div class="p-3">
+              <label for="updatePizzaName"><span class="badge">Pizza name</span></label>  
+              <select class="input input-bordered input-accent w-full max-w-xs"  placeholder="Pizza name" id="updatePizzaName"></select>
+            </div>
+            <div class="p-3"> 
+                  <label for="name"><span>Toppings</span></label>
+                  
+                     <fieldset id="updateBase">
+                        <span class="badge">Tomato sauce</span><input type="checkbox" value="tomato" name="group3"  class="utoppings-form"></label>
+                       <span class="badge">Sour cream</span><input type="checkbox" value="cream" name="group3"  class="utoppings-form"></label>
+                      </fieldset>
+  
+                      <fieldset id="updateTop">
+                        <label for="cheese"><span class="badge">Cheese</span><input type="checkbox" value="cheese" name="group4"  class="utoppings-form"></label>
+                       <span class="badge">Ham</span><input type="checkbox" value="ham" name="group4"  class="utoppings-form"></label>
+                        <span class="badge">Pineapple</span><input type="checkbox" value="pineapple" name="group4"  class="utoppings-form"></label>
+                        <span class="badge">Pepperoni</span><input type="checkbox" value="pepperoni" name="group4"  class="utoppings-form"></label>
+                        <span class="badge">Bacon</span><input type="checkbox" value="bacon" name="group4"  class="utoppings-form"></label>
+                      </fieldset>
+                   
+            </div>
+            <div class="p-3"> 
+                 <label for="uprice"><span class="badge">Price</span></label>
+                <input type="number" class="input input-bordered input-accent w-full max-w-xs"  placeholder="Price" id="updatePrice"/>
+             </div>
+             <div class="p-3">
+              <label for="file"><span>Upload File</span></label>  
+                      <input type="file" class="file-input-primary" id="uimage" name="uimage" />  
+                         
+              </div> <br>
+                 <button class="btn btn-info" id="uload-button">Update pizza</button>
+                 <button class="btn btn-neutral" id="uclear-button">Clear form</button>
+                
+        </section>
+
+      </div>
+      <div class="panel" id="three-panel">
+
+    <section id="deletePizza" class="bg-slate-300 m-5 p-5">
+      <h1>Remove Pizza</h1>
+       <div class="p-3">
+          <label for="deletePizzaName"><span class="badge">Pizza name</span></label>  
+          <select class="input input-bordered input-accent w-full max-w-xs"  placeholder="Pizza name" id="deletePizzaName"></select>
+       </div>
+          <br>
+        <button class="btn btn-info" id="delete-button">Remove pizza</button>
+        <button class="btn btn-neutral" id="clear-button">Cancel</button>
+    </section>
+  </div>
+</div>
+
+</div>
+</div>
+
+ </body>
+</html>

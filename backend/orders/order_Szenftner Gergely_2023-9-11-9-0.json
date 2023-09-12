@@ -1,0 +1,26 @@
+{
+    "pizza": [
+        {
+            "pizza": "Vegi Supreme",
+            "price": "3790",
+            "piece": "3"
+        },
+        {
+            "pizza": "Pepperoni Passion",
+            "price": "3990",
+            "piece": "4"
+        },
+        {
+            "pizza": "Texas BBQ",
+            "price": "3690",
+            "piece": "2"
+        }
+    ],
+    "date": "2023-9-11-9-0",
+    "name": "Szenftner Gergely",
+    "phone": "06702787238",
+    "zipCode": "9072",
+    "city": "Nagyszentjános",
+    "street": "Fenyves utca 9",
+    "house": "32"
+}

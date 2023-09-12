@@ -1,0 +1,16 @@
+{
+    "pizza": [
+        {
+            "pizza": "Meatball Marinara",
+            "price": "3990",
+            "piece": "1"
+        }
+    ],
+    "date": "2023-9-11-8-53",
+    "name": "Gergely Szenftner",
+    "phone": "06702787238",
+    "zipCode": "9012",
+    "city": "Győr",
+    "street": "Régiposta út 20",
+    "house": "2121"
+}
