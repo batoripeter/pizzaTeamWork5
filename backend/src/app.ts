@@ -25,7 +25,7 @@ const CreationSchema = z.object({
     price: z.number(),
     piece: z.string(),
   })),
-  date: z.string(),
+  date: z.number(),
   name: z.string(),
   phone: z.string(),
   zipCode: z.string(),

@@ -19,8 +19,8 @@ var pizzaName:PizzaName[] = [{
 }]
 
 let pizzaPrice: number[] = [];
-//let pizzaPiece: number[] = [];
-let count = Object.keys("../backend/data/pizzascript.json")
+let pizzaPiece: number[] = [];
+let counter:number = Math.floor(Object.values("../backend/data/pizzascript.json").length/4)
 
 const pizzaFunction = async () => {
   const response = await http.get("http://localhost:3000/");
@@ -33,9 +33,10 @@ const pizzaFunction = async () => {
 
   let i = 0;
 
-  while (i < count.length) {
+  while (i < counter) {
     let pizzaFields = document.createElement("div") as HTMLDivElement
     pizzaFields.setAttribute("id","pizza-section" + [i] );
+    pizzaFields.setAttribute("class","pizza-section_block");
     (document.getElementById("pizzasection") as HTMLElement).appendChild(pizzaFields);
 
     let pizzaNewName = document.createElement("h1") as HTMLParagraphElement;
@@ -46,6 +47,7 @@ const pizzaFunction = async () => {
 
     let pizzaNewImage = document.createElement("img") as HTMLImageElement;
     pizzaNewImage.src = pizzaFromJson[i].link;
+    pizzaNewImage.width = 400;
     (document.getElementById("pizza-section" + [i]) as HTMLElement).appendChild(pizzaNewImage);
 
     let pizzaNewToppings = document.createElement("p") as HTMLParagraphElement;
@@ -58,6 +60,10 @@ const pizzaFunction = async () => {
     (document.getElementById("pizza-section" + [i]) as HTMLElement).appendChild(pizzaNewPrice);
     pizzaPrice.push(+pizzaFromJson[i].price);
 
+    let pizzaPieceSelector = document.createElement("p") as HTMLParagraphElement;
+    pizzaPieceSelector.innerHTML="Amount: ";
+    (document.getElementById("pizza-section" + [i]) as HTMLElement).appendChild(pizzaPieceSelector);
+
     let pizzaNewPieceInput = document.createElement( "input") as HTMLInputElement;
     pizzaNewPieceInput.setAttribute("type", "number");
     pizzaNewPieceInput.setAttribute("id", "pizzaPiece" + [i]);
@@ -65,7 +71,6 @@ const pizzaFunction = async () => {
      i++;
   }
 };
-
 pizzaFunction();
 
 const customerName = document.getElementById("name")! as HTMLInputElement;
@@ -144,27 +149,43 @@ document.getElementById("addtoorder")!.addEventListener("click", () => {
   document.getElementById("pizzaorderpiece")!.innerHTML=""
   document.getElementById("pizzaorderprice")!.innerHTML=""
   document.getElementById("totalprice")!.innerHTML=""
-amountArray= []
-pizzaOrders=[]
 
- let j = 0
+
+let j = 0
   let pizzaPieces:number[]=[]
-  while(j<count.length){
+  while(j<counter){
   pizzaPieces.push(+(document.getElementById("pizzaPiece"+[j]) as HTMLInputElement).value)
   j++
   }
   console.log(pizzaPieces)
 
-let k=1 
+
+let k=0 
 const pizzaOrder: Pizza[] = []
-while (k<count.length){
+while (k<counter){
    pizzaOrder.push(
-    {pizzaname: "" + pizzaName[k],      piece: + pizzaPieces[k-1],      price: + pizzaPrice[k]},
+    {pizzaname: "" + pizzaName[k],      piece: + pizzaPieces[k],      price: + pizzaPrice[k]},
   )
   k++
 }
 
+
 console.log(pizzaOrder)
+
+/*
+let j = 0
+  let pizzaPieces:number[]=[]
+  const pizzaOrder: Pizza[] = []
+  while(j<counter){
+  pizzaPieces.push(+(document.getElementById("pizzaPiece"+[j]) as HTMLInputElement).value)
+  pizzaOrder.push( {pizzaname: "" + pizzaName[j], piece: + pizzaPieces[j-1], price: + pizzaPrice[j]},
+  )
+  j++
+}
+
+
+console.log(pizzaOrder)
+*/
 
   pizzaOrder.forEach((pizzaData) => {
     

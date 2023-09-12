@@ -42,8 +42,6 @@ const cors_1 = __importDefault(require("cors"));
 const zod_1 = require("zod");
 const path_1 = __importDefault(require("path"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
-const pg_1 = require("pg");
-const pinch = require('pinch');
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, express_fileupload_1.default)());
@@ -51,7 +49,6 @@ app.use(express_1.default.text());
 app.use((0, cors_1.default)());
 app.use(express_1.default.static('data'));
 const port = 3000;
-const client = new pg_1.Client("./data/pizzascript.json");
 const CreationSchema = zod_1.z.object({
     pizza: zod_1.z.array(zod_1.z.object({
         id: zod_1.z.number(),
@@ -59,7 +56,7 @@ const CreationSchema = zod_1.z.object({
         price: zod_1.z.number(),
         piece: zod_1.z.string(),
     })),
-    date: zod_1.z.string(),
+    date: zod_1.z.number(),
     name: zod_1.z.string(),
     phone: zod_1.z.string(),
     zipCode: zod_1.z.string(),
@@ -73,6 +70,7 @@ const PizzaSchema = zod_1.z.object({
     toppings: zod_1.z.string(),
     price: zod_1.z.number(),
     link: zod_1.z.string(),
+    picture: zod_1.z.string()
 });
 const folderPath = './orders';
 const outputFilePath = './orders.json';
@@ -94,7 +92,7 @@ app.get('/api/orders', (req, res) => __awaiter(void 0, void 0, void 0, function*
     res.send(JSON.parse(ordersData));
 }));
 //add new pizza to json
-app.get("/profile.jpg", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return res.sendFile(path_1.default.join(`${__dirname}./data/profile.jpg`)); }));
+app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return res.sendFile("./data/images/" + req.body.link); }));
 app.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const pictureUploadPath = "./data/images/" + req.body.link;
     if (req.files) {
@@ -111,9 +109,9 @@ app.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         name: req.body.name,
         toppings: req.body.toppings,
         price: +req.body.price,
-        link: req.body.link,
+        link: "http://localhost:3000/images/" + req.body.link,
+        picture: req.body.picture
     };
-    //fileData.picture = "/profile.jpg";
     const uploadPath = "./data/" + "pizzascript.json";
     let pizzas = [];
     pizzas = yield JSON.parse(fs.readFileSync(uploadPath, "utf-8"));
@@ -142,10 +140,7 @@ app.patch("/update", (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
     const uploadPath = "./data/pizzascript.json";
     const pizzaData = yield JSON.parse(fs.readFileSync(uploadPath, 'utf-8'));
-    //	let filteredPizza:Pizza = pizzaData.filter((pizza:Pizza) => pizza.name === req.body.name)
     const index = pizzaData.findIndex((pizza) => pizza.name === req.body.name);
-    console.log(req.body.name);
-    console.log(index);
     pizzaData.splice(index, 1);
     //fileData.picture = "/profile.jpg";
     const newPizzaData = {
@@ -153,7 +148,7 @@ app.patch("/update", (req, res) => __awaiter(void 0, void 0, void 0, function* (
         name: req.body.name,
         toppings: req.body.toppings,
         price: +req.body.price,
-        link: req.body.link,
+        link: "http://localhost:3000/images/" + req.body.link,
     };
     pizzaData.push(newPizzaData);
     fs.writeFile(uploadPath, JSON.stringify(pizzaData), (err) => {
@@ -162,7 +157,7 @@ app.patch("/update", (req, res) => __awaiter(void 0, void 0, void 0, function* (
             return res.status(500).send(err);
         }
     });
-    //	return res.send(filteredPizza);
+    return res.send(pizzaData);
 }));
 //delete pizza from json	
 app.delete("/delete", (req, res) => __awaiter(void 0, void 0, void 0, function* () {

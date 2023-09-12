@@ -4,6 +4,7 @@
 
 h1, h3, h2 {
   font-family: 'Teko', sans-serif;
+  font-size: xx-large
 }
 
 h3, h2 {
@@ -16,4 +17,13 @@ img {
 
 span {
   font-weight: bold;
+}
+
+.pizza-section_block {
+  margin: 30px;
+  background-color: beige;
+}
+
+input {
+  background-color: gainsboro
 }

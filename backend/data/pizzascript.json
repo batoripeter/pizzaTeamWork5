@@ -47,5 +47,12 @@
     "toppings": "Chicken Breast Strips, Onions, Smoked Bacon Rashers, Green and Red Peppers, BBQ Sauce, Mozzarella Cheese",
     "price": 3690,
     "link": "http://localhost:3000/images/bbq.webp"
+  },
+  {
+    "id": 8,
+    "name": "pizzateszt2",
+    "toppings": "tomato,ham",
+    "price": 445,
+    "link": "http://localhost:3000/images/64e330161af672ebd83e855d.jpg"
   }
 ]
