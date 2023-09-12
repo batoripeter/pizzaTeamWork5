@@ -1,6 +1,6 @@
 import "./style.css";
 import http from "axios";
-import { object, z } from "zod";
+import { z } from "zod";
 
 const PizzaResponseSchema = z.object({
   id: z.number(),
@@ -241,7 +241,7 @@ console.log(pizzaOrder)
 });
 
 document.getElementById("order")!.addEventListener("click", () => {
-  async function postJSON(data: any) {
+  async function postJSON(data: Order) {
     try {
       const response = await http("http://localhost:3000/api/orders", {
         method: "POST", // or 'PUT'
@@ -250,6 +250,9 @@ document.getElementById("order")!.addEventListener("click", () => {
         },
         data: JSON.stringify(data),
       });
+      
+      console.log(data)
+
       const result = await response.data;
       console.log("Success:", result);
     } catch (error) {
@@ -258,19 +261,18 @@ document.getElementById("order")!.addEventListener("click", () => {
   }
 
   const orderData: Order = {
-    customer: {
-      customername: customerName.value,
-      zipcode: customerZipCode.value,
-      city: customerCity.value,
-      street: customerStreet.value,
-      house: customerHouseNumber.value,
-      email: customerEmail.value,
-      phone: customerPhoneNumber.value,
-    },
-    date: today,
+    id:1,
     pizza: pizzaOrders,
-    totalprice: priceSum,
+    date: today,
+    name: customerName.value,
+    phone: customerPhoneNumber.value,
+    zipCode: customerZipCode.value,
+    city: customerCity.value,
+    street: customerStreet.value,
+    house: customerHouseNumber.value,
+    email: customerEmail.value,
   };
 
   postJSON(orderData);
-});
+
+})

@@ -19,19 +19,20 @@ app.use(express.static('data'))
 const port = 3000
 
 const CreationSchema = z.object({
-  pizza: z.array(z.object({
-    id: z.number(),
-    pizza: z.string(),
-    price: z.number(),
-    piece: z.string(),
-  })),
-  date: z.number(),
+  id: z.number(),
+    pizza: z.array(z.object({
+      pizzaname: z.string(),
+      piece: z.number(),
+      price: z.number(),
+    })),
+  date: z.string(),
   name: z.string(),
   phone: z.string(),
   zipCode: z.string(),
   city: z.string(),
   street: z.string(),
   house: z.string(),
+  email: z.string(),
 })
 
 
@@ -55,7 +56,7 @@ app.get('/', async (req: Request, res: Response) => {
   const pizzasData = await fs.readFileSync("./data/pizzascript.json", "utf-8")
   res.send(JSON.parse(pizzasData)) 
 })
-
+/*
 app.post('/api/orders', async (req: Request, res: Response) => {
 
   const result = CreationSchema.safeParse(req.body)
@@ -72,6 +73,27 @@ app.get('/api/orders', async (req: Request, res: Response) => {
   const ordersData = await fs.readFileSync("./orders.json", "utf-8")
   res.send(JSON.parse(ordersData)) 
 })
+*/
+
+app.post('/api/orders', async (req: Request, res: Response) => {
+
+  const result = CreationSchema.safeParse(req.body)
+  if(!result.success) {
+      return res.sendStatus(400)
+  }
+
+  await fs.writeFileSync(`./orders/order_${result.data.name}_${result.data.date}.json`, JSON.stringify(result.data), "utf-8")
+
+  res.status(200).json(result.data)
+})
+
+app.get('/api/orders', async (req: Request, res: Response) => {
+  const ordersData = await fs.readFileSync("./orders.json", "utf-8")
+  res.send(JSON.parse(ordersData)) 
+})
+
+
+
 
 //add new pizza to json
 app.get("/", async (req, res) =>

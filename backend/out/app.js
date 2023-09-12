@@ -50,19 +50,20 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.static('data'));
 const port = 3000;
 const CreationSchema = zod_1.z.object({
+    id: zod_1.z.number(),
     pizza: zod_1.z.array(zod_1.z.object({
-        id: zod_1.z.number(),
-        pizza: zod_1.z.string(),
+        pizzaname: zod_1.z.string(),
+        piece: zod_1.z.number(),
         price: zod_1.z.number(),
-        piece: zod_1.z.string(),
     })),
-    date: zod_1.z.number(),
+    date: zod_1.z.string(),
     name: zod_1.z.string(),
     phone: zod_1.z.string(),
     zipCode: zod_1.z.string(),
     city: zod_1.z.string(),
     street: zod_1.z.string(),
     house: zod_1.z.string(),
+    email: zod_1.z.string(),
 });
 const PizzaSchema = zod_1.z.object({
     id: zod_1.z.number(),
@@ -79,12 +80,30 @@ app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const pizzasData = yield fs.readFileSync("./data/pizzascript.json", "utf-8");
     res.send(JSON.parse(pizzasData));
 }));
+/*
+app.post('/api/orders', async (req: Request, res: Response) => {
+
+  const result = CreationSchema.safeParse(req.body)
+  if(!result.success) {
+      return res.sendStatus(400)
+  }
+
+  await fs.writeFileSync(`./orders/order_${result.data.name}_${result.data.date}.json`, JSON.stringify(result.data))
+
+  res.status(200).json(result.data)
+})
+
+app.get('/api/orders', async (req: Request, res: Response) => {
+  const ordersData = await fs.readFileSync("./orders.json", "utf-8")
+  res.send(JSON.parse(ordersData))
+})
+*/
 app.post('/api/orders', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = CreationSchema.safeParse(req.body);
     if (!result.success) {
         return res.sendStatus(400);
     }
-    yield fs.writeFileSync(`./orders/order_${result.data.name}_${result.data.date}.json`, JSON.stringify(result.data));
+    yield fs.writeFileSync(`./orders/order_${result.data.name}_${result.data.date}.json`, JSON.stringify(result.data), "utf-8");
     res.status(200).json(result.data);
 }));
 app.get('/api/orders', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
